@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-graphite-950 text-steel-200 font-sans;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  ::selection {
+    background: #F2611B;
+    color: #0A0B0D;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-white;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+  }
+}
+
+@layer components {
+  .container-wide {
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-10;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.18em] text-accent-500;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply h-px w-6 bg-accent-500;
+  }
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-md bg-accent-500 px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:bg-accent-400 hover:shadow-glow-orange active:translate-y-px;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-white/10 bg-white/[0.02] px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:border-white/25 hover:bg-white/[0.06];
+  }
+  .glass-panel {
+    @apply rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl;
+  }
+  .field {
+    @apply w-full rounded-md border border-white/10 bg-graphite-900/70 px-4 py-3 text-sm text-white placeholder-steel-500 outline-none transition focus:border-accent-500/70 focus:bg-graphite-800;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-steel-300;
+  }
+}
+
+/* Нативные стрелки number-инпутов не поддаются теме — убираем их везде;
+   там, где нужен степпер, рисуем свои кнопки поверх (см. QuickCalcModal). */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(168,178,191,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168,178,191,0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at top, #000 30%, transparent 80%);
+}
